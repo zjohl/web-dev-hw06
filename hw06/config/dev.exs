@@ -68,7 +68,7 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :hw06, Hw06.Repo,
-  username: "postgres",
+  username: "hw06",
   password: "postgres",
   database: "hw06_dev",
   hostname: "localhost",
