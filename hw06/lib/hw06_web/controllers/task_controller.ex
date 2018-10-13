@@ -2,6 +2,7 @@ defmodule Hw06Web.TaskController do
   use Hw06Web, :controller
 
   alias Hw06.Tasks
+  alias Hw06.Users
   alias Hw06.Tasks.Task
 
   def index(conn, _params) do
@@ -11,7 +12,7 @@ defmodule Hw06Web.TaskController do
 
   def new(conn, _params) do
     changeset = Tasks.change_task(%Task{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, users: Users.list_users())
   end
 
   def create(conn, %{"task" => task_params}) do
@@ -34,7 +35,7 @@ defmodule Hw06Web.TaskController do
   def edit(conn, %{"id" => id}) do
     task = Tasks.get_task!(id)
     changeset = Tasks.change_task(task)
-    render(conn, "edit.html", task: task, changeset: changeset)
+    render(conn, "edit.html", task: task, changeset: changeset, users: Users.list_users())
   end
 
   def update(conn, %{"id" => id, "task" => task_params}) do

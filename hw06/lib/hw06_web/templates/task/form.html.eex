@@ -5,23 +5,35 @@
     </div>
   <% end %>
 
+<div "form-group">
   <%= label f, :title %>
-  <%= text_input f, :title %>
+  <%= text_input f, :title, class: "form-control" %>
   <%= error_tag f, :title %>
+</div>
 
+<div "form-group">
   <%= label f, :desc %>
   <%= textarea f, :desc %>
   <%= error_tag f, :desc %>
+</div>
 
+<div "form-group">
   <%= label f, :completed %>
   <%= checkbox f, :completed %>
   <%= error_tag f, :completed %>
+</div>
 
+<div "form-group">
   <%= label f, :time_spent %>
-  <%= number_input f, :time_spent %>
+  <%= number_input f, :time_spent, class: "form-control" %>
   <%= error_tag f, :time_spent %>
-
+</div>
+<div "form-group">
+  <%= label f, :user %>
+  <%= select f, :user, @users, class: "form-control" %>
+  <%= error_tag f, :user %>
+</div>
   <div>
-    <%= submit "Save" %>
+    <%= submit "Save", class: "btn btn-primary" %>
   </div>
 <% end %>

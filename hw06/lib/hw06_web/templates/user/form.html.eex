@@ -5,15 +5,19 @@
     </div>
   <% end %>
 
-  <%= label f, :email %>
-  <%= text_input f, :email %>
-  <%= error_tag f, :email %>
+  <div class="form-group">
+    <%= label f, :email %>
+    <%= text_input f, :email, class: "form-control" %>
+    <%= error_tag f, :email %>
+  </div>
 
-  <%= label f, :admin %>
-  <%= checkbox f, :admin %>
-  <%= error_tag f, :admin %>
+  <div class="form-group">
+    <%= label f, :admin %>
+    <%= checkbox f, :admin %>
+    <%= error_tag f, :admin %>
+  </div>
 
   <div>
-    <%= submit "Save" %>
+    <%= submit "Save", class: "btn btn-primary" %>
   </div>
 <% end %>
