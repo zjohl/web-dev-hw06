@@ -28,10 +28,14 @@ module.exports = (env, options) => ({
           loader: 'babel-loader'
         }
       },
-      {
-        test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-      },
+        {
+            test: /\.css$/,
+            use: [MiniCssExtractPlugin.loader, 'css-loader']
+        },
+        {
+            test: /\.scss$/,
+            use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        },
     ]
   },
   plugins: [
