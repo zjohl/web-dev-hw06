@@ -21,6 +21,10 @@ defmodule Hw06.Users do
     Repo.all(User)
   end
 
+  def list_user_emails do
+    Repo.all(from(u in User, select: {u.email, u.id}))
+  end
+
   @doc """
   Gets a single user.
 

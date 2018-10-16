@@ -17,7 +17,7 @@ defmodule Hw06Web.Router do
   scope "/", Hw06Web do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", TaskController, :index
     resources "/tasks", TaskController
     resources "/users", UserController
     resources "/sessions", SessionController, only: [:create, :delete], singleton: true

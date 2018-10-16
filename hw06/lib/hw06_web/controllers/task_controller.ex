@@ -12,7 +12,8 @@ defmodule Hw06Web.TaskController do
 
   def new(conn, _params) do
     changeset = Tasks.change_task(%Task{})
-    render(conn, "new.html", changeset: changeset, users: Users.list_users())
+    users = Users.list_user_emails
+    render(conn, "new.html", changeset: changeset, users: users)
   end
 
   def create(conn, %{"task" => task_params}) do
@@ -35,7 +36,8 @@ defmodule Hw06Web.TaskController do
   def edit(conn, %{"id" => id}) do
     task = Tasks.get_task!(id)
     changeset = Tasks.change_task(task)
-    render(conn, "edit.html", task: task, changeset: changeset, users: Users.list_users())
+    users = Users.list_user_emails
+    render(conn, "edit.html", task: task, changeset: changeset, users: users)
   end
 
   def update(conn, %{"id" => id, "task" => task_params}) do

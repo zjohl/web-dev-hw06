@@ -6,6 +6,7 @@ defmodule Hw06.Users.User do
   schema "users" do
     field :admin, :boolean, default: false
     field :email, :string
+    has_many :tasks, Hw06.Tasks.Task
 
     timestamps()
   end
