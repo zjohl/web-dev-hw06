@@ -1,4 +1,4 @@
-defmodule Hw06.SessionController do
+defmodule Hw06Web.SessionController do
   use Hw06Web, :controller
   # Module copied from Nat's Lecture notes
 
