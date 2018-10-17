@@ -45,6 +45,13 @@ defmodule Hw06Web.TaskController do
   end
 
   def edit(conn, %{"id" => id}) do
+    if (!conn.assigns[:current_user]) do
+      conn
+      |> put_flash(:error, "You need to be logged in to edit a task")
+      |> redirect(to: Routes.user_path(conn, :index))
+      |> halt
+    end
+
     task = Tasks.get_task!(id)
     changeset = Tasks.change_task(task)
     users = Users.list_user_emails
@@ -66,6 +73,13 @@ defmodule Hw06Web.TaskController do
   end
 
   def delete(conn, %{"id" => id}) do
+    if (!conn.assigns[:current_user]) do
+      conn
+      |> put_flash(:error, "You need to be logged in to delete a task")
+      |> redirect(to: Routes.user_path(conn, :index))
+      |> halt
+    end
+
     task = Tasks.get_task!(id)
     {:ok, _task} = Tasks.delete_task(task)
 
