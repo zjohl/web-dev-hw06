@@ -1,5 +1,6 @@
 defmodule Hw06Web.UserController do
   use Hw06Web, :controller
+  plug HuskyShopWeb.Plugs.RequireAdmin when action in [:update, :delete]
 
   alias Hw06.Users
   alias Hw06.Users.User
@@ -28,7 +29,7 @@ defmodule Hw06Web.UserController do
   end
 
   def show(conn, %{"id" => id}) do
-    user = Users.get_user!(id)
+    user = Users.get_user(id)
     render(conn, "show.html", user: user)
   end
 
