@@ -11,7 +11,7 @@ defmodule Hw06Web.Plugs.RequireAdmin do
     else
       conn
       |> put_flash(:error, "You don't have permissions to take that action")
-      |> redirect(to: Routes.page_path(conn, :index))
+      |> redirect(to: Routes.task_path(conn, :index))
       |> halt
     end
   end
