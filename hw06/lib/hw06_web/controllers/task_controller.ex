@@ -11,7 +11,18 @@ defmodule Hw06Web.TaskController do
   end
 
   def new(conn, _params) do
-    changeset = Tasks.change_task(%Task{})
+    if (!conn.assigns[:current_user]) do
+      conn
+      |> put_flash(:error, "You need to be logged in to make a task")
+      |> redirect(to: Routes.user_path(conn, :index))
+      |> halt
+    end
+
+    changeset = Tasks.change_task(%Task{
+      completed: false,
+      time_spent: 0,
+      user_id: conn.assigns[:current_user],
+    })
     users = Users.list_user_emails
     render(conn, "new.html", changeset: changeset, users: users)
   end
