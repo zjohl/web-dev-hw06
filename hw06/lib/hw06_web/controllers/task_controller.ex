@@ -22,6 +22,7 @@ defmodule Hw06Web.TaskController do
       completed: false,
       time_spent: 0,
       user_id: conn.assigns[:current_user].id,
+      description: "",
     })
     users = Users.list_user_emails
     render(conn, "new.html", changeset: changeset, users: users)
@@ -35,7 +36,8 @@ defmodule Hw06Web.TaskController do
         |> redirect(to: Routes.task_path(conn, :show, task))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        users = Users.list_user_emails
+        render(conn, "new.html", changeset: changeset, users: users)
     end
   end
 
