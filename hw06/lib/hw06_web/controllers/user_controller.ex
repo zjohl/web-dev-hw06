@@ -1,6 +1,6 @@
 defmodule Hw06Web.UserController do
   use Hw06Web, :controller
-  plug HuskyShopWeb.Plugs.RequireAdmin when action in [:update, :delete]
+  plug Hw06Web.Plugs.RequireAdmin when action in [:update, :delete]
 
   alias Hw06.Users
   alias Hw06.Users.User
