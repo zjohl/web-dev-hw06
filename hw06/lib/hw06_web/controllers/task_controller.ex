@@ -21,7 +21,7 @@ defmodule Hw06Web.TaskController do
     changeset = Tasks.change_task(%Task{
       completed: false,
       time_spent: 0,
-      user_id: conn.assigns[:current_user],
+      user_id: conn.assigns[:current_user].id,
     })
     users = Users.list_user_emails
     render(conn, "new.html", changeset: changeset, users: users)
